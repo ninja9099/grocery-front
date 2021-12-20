@@ -6,11 +6,13 @@ import {GroceryService} from "./grocery.service";
 import {SharedModule} from "../../shared/shared.module";
 import {CoreModule} from "../../core/core.module";
 import {FormsModule} from "@angular/forms";
+import { GroceryListEditComponent } from './grocery-list-edit/grocery-list-edit.component';
 
 
 @NgModule({
   declarations: [
-    GroceryManagementComponent
+    GroceryManagementComponent,
+    GroceryListEditComponent
   ],
     imports: [
         CommonModule,

@@ -6,6 +6,7 @@ import {environment} from "../../../../environments/environment";
 import {Path} from "../../../core/structs";
 import {ToastrService} from "ngx-toastr";
 import {IDatePickerConfig} from "ng2-date-picker";
+import {Router} from "@angular/router";
 
 declare var $: any;
 
@@ -29,12 +30,12 @@ export class GroceryManagementComponent implements OnInit {
 
   constructor(
     private groceryService: GroceryService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private  router: Router
   ) {
   }
 
   ngOnInit(): void {
-    this.dueDate = new Date().toISOString();
     this.initDatePicker()
   }
 
@@ -50,12 +51,12 @@ export class GroceryManagementComponent implements OnInit {
   displayStr() {
     if (this.display !== undefined && this.groceryList !== undefined) {
       if (this.total === 0) {
-        return 'Showing 0-0 lists of 0 Lists';
+        return 'Showing 0-0 GroceryLists of 0 GroceryLists';
       } else {
         if ((this.itemsPerPage + parseInt(this.display.offset, 10)) > this.total) {
           return `Showing ${this.display.offset + 1}-${this.total} lists of ${this.total} GroceryLists`;
         } else {
-          return `Showing ${this.display.offset + 1}-${this.itemsPerPage + this.display.offset} model of ${this.total} models`;
+          return `Showing ${this.display.offset + 1}-${this.itemsPerPage + this.display.offset} GroceryList of ${this.total} GroceryLists`;
         }
       }
     } else {
@@ -78,6 +79,9 @@ export class GroceryManagementComponent implements OnInit {
     }, error => {
       this.toast.error("Error deleting List", "Error :(");
     })
+  }
+  editGroceryList(id: string){
+    this.router.navigate(['grocery', id])
   }
 
   initDatePicker() {

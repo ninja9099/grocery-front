@@ -18,3 +18,15 @@ export interface IGroceryListResults {
   updated_by: string;
   user: number;
 }
+export interface IGroceryListItem {
+  id: number,
+  created_ts: string,
+  updated_ts: string,
+  name: string,
+  quantity: number,
+  unit_of_measure: string,
+  status: string,
+  created_by: string,
+  updated_by: string,
+  grocery_list: string,
+}

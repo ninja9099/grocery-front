@@ -5,4 +5,5 @@ export enum Path {
   account_reset_password = 'account_reset_password/',
   account_set_password = 'account_set_password/',
   groceryList = 'grocery-list/',
+  groceryListItem = 'grocery-items/',
 }
