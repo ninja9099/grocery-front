@@ -1,0 +1,72 @@
+<!-- Container Start -->
+<div class="login-bg">
+  <div class="login-page">
+    <div class="logo">
+      <a href="">
+        <img src="assets/images/logo.png" alt="" title="" class="img-fluid lazyload"/>
+      </a>
+    </div>
+    <div class="login-block">
+      <form [formGroup]="registerForm">
+        <div class="h4 mb-4 fw-bold text-center">Create Account</div>
+        <div class="form-group mb-2">
+          <input type="text" formControlName="firstName" placeholder="First Name" class="form-control"/>
+        </div>
+        <div class="mb-3">
+          <span class="text-danger" *ngIf="submitted && f.firstName?.errors?.required">
+              Please enter first name
+          </span>
+        </div>
+        <div class="form-group mb-2">
+          <input type="text" formControlName="lastName" placeholder="Last Name" class="form-control"/>
+        </div>
+        <div class="mb-3">
+          <span class="text-danger" *ngIf="submitted && f.lastName?.errors?.required">
+              Please enter last name
+          </span>
+        </div>
+
+        <div class="form-group mb-2">
+          <input type="text" placeholder="Email" class="form-control" formControlName="email"/>
+        </div>
+        <div class="mb-3">
+          <span class="text-danger" *ngIf="submitted && f.email?.errors?.required">
+            Please enter last name
+          </span>
+          <span class="text-danger" *ngIf="submitted && f.email?.errors?.pattern">
+            Invalid Email
+          </span>
+        </div>
+
+        <div class="form-group mb-2">
+          <input type="password" placeholder="Password" class="form-control" formControlName="password"/>
+        </div>
+
+        <div class="mb-3">
+          <span class="text-danger" *ngIf="submitted && f.password?.errors?.required">
+              Please enter password
+          </span>
+          <span class="text-danger" *ngIf="submitted && f.password?.errors?.pattern">
+            Password must contain 8 characters with at least one alphabate,one numerical and a special character
+          </span>
+        </div>
+        <div class="form-group mb-3">
+          <input type="password" formControlName="confirmPassword" placeholder="Retype Password" class="form-control"/>
+        </div>
+        <div class="mb-3">
+          <span class="text-danger" *ngIf="submitted && f.confirmPassword?.errors?.required">
+              Please enter confirm password
+          </span>
+          <span class="text-danger" *ngIf="registerForm.hasError('invalid')">
+              Password and confirm password does not match
+          </span>
+        </div>
+        <button class="btn btn-lg w-100 mb-3" (click)="register()">Register</button>
+
+        <div class="text-center login-link">Already have account?
+          <a [routerLink]="['/auth',  'user', 'login']" class="text-decoration-underline">Sign In </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

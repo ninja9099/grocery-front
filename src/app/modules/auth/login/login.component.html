@@ -1,0 +1,36 @@
+<!-- Container Start -->
+<div class="login-bg">
+  <div class="login-page">
+    <div class="logo">
+      <a href="">
+        <img src="assets/images/logo.png" alt="" title="" class="img-fluid lazyload"/>
+      </a>
+    </div>
+    <div class="login-block">
+      <div *ngIf="isloginError" class="error text-center">{{loginError}}</div>
+      <form  [formGroup]="loginForm">
+        <div class="h4 mb-4 fw-bold text-center">Sign In</div>
+        <div class="form-group mb-2">
+          <input type="text" name="" placeholder="Eamil" formControlName="username"  class="form-control"/>
+        </div>
+         <div class="mb-3">
+            <span class="text-danger" *ngIf="submitted && f.username?.errors?.required">
+            * Username required
+            </span>
+         </div>
+        <div class="form-group mb-3">
+          <input type="password" name="" placeholder="Password" formControlName="password" class="form-control"/>
+        </div>
+        <div class="mb-3">
+            <span class="text-danger mb-3" *ngIf="submitted && f.password?.errors?.required">
+              * Password is required
+          </span>
+        </div>
+        <button class="btn btn-lg w-100 mb-3" (click)="login()" type="submit">Sign In</button>
+        <div class="text-center login-link"><a [routerLink]="['/auth', 'user', 'signup']">Signup</a>
+          <span class="mx-3">|</span> <a [routerLink]="['/auth', 'user', 'password-reset']" >Forgot
+          Password?</a></div>
+      </form>
+    </div>
+  </div>
+</div><!-- Container End -->
