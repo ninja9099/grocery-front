@@ -15,6 +15,7 @@ export class LoaderService {
 
     constructor() { }
     show() {
+      debugger;
       this.loaderSubject.next({ show: true } as LoaderState);
     }
     hide() {

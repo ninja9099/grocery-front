@@ -33,11 +33,11 @@ export class GroceryService {
       return this.apiService.post(`${Path.base}${Path.groceryListItem}`, formData)
     }
 
-    editGroceryListItem(groceryListId: string){
-      return this.apiService.put(`${Path.base}${Path.groceryListItem}`, {})
+    editGroceryListItem(groceryItemId: number, formData: FormData){
+      return this.apiService.put(`${Path.base}${Path.groceryListItem}${groceryItemId}/`, formData)
     }
 
-    deleteGroceryListItem(groceryListId: string){
-      return this.apiService.delete(`${Path.base}${Path.groceryListItem}`, {})
+    deleteGroceryListItem(groceryItemId: number){
+      return this.apiService.delete(`${Path.base}${Path.groceryListItem}${groceryItemId}/`, {})
     }
 }

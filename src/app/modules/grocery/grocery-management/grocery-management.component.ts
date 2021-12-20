@@ -18,6 +18,7 @@ declare var $: any;
 export class GroceryManagementComponent implements OnInit {
 
   public groceryList: IGroceryListResults[];
+  public groceryListOriginal: IGroceryListResults[];
   public itemsPerPage = 10;
   public changes = new BehaviorSubject<any>([{key: 'limit', value: 3}]);
   public total = 0;
@@ -31,7 +32,7 @@ export class GroceryManagementComponent implements OnInit {
   constructor(
     private groceryService: GroceryService,
     private toast: ToastrService,
-    private  router: Router
+    private router: Router
   ) {
   }
 
@@ -41,6 +42,7 @@ export class GroceryManagementComponent implements OnInit {
 
   onResult($event) {
     this.groceryList = $event.results;
+    this.groceryListOriginal = $event.results;
     this.total = $event.count;
   }
 
@@ -80,7 +82,8 @@ export class GroceryManagementComponent implements OnInit {
       this.toast.error("Error deleting List", "Error :(");
     })
   }
-  editGroceryList(id: string){
+
+  editGroceryList(id: string) {
     this.router.navigate(['grocery', id])
   }
 
@@ -94,6 +97,7 @@ export class GroceryManagementComponent implements OnInit {
         date.getFullYear()
       );
     }
+
     var currentDate = formatDate(new Date());
     $(".due-date-button").datepicker({
       format: "dd/mm/yyyy",
@@ -113,4 +117,21 @@ export class GroceryManagementComponent implements OnInit {
         });
     });
   };
+
+  filterGroceryList(event) {
+    if (event.target.value === 'all') {
+      this.changes.next(this.queryParams)
+      return
+    }
+
+    let queryParams = this.queryParams;
+    queryParams.push({key: 'status', value: event.target.value})
+    this.changes.next(queryParams)
+    // // filters the list locally
+    // this.groceryList = this.groceryListOriginal;
+    // if (event.target.value === 'all'){
+    //   return;
+    // }
+    // this.groceryList = this.groceryListOriginal.filter(item => item.status === event.target.value)
+  }
 }
