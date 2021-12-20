@@ -13,7 +13,7 @@ import {LoaderComponent} from "./loader/loader.component";
   ],
   exports: [
     PaginationComponent,
-    LoaderComponent
+    LoaderComponent,
   ],
   imports: [
     CommonModule,

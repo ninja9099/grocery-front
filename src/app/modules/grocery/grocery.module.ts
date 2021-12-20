@@ -5,18 +5,20 @@ import { GroceryManagementComponent } from './grocery-management/grocery-managem
 import {GroceryService} from "./grocery.service";
 import {SharedModule} from "../../shared/shared.module";
 import {CoreModule} from "../../core/core.module";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [
     GroceryManagementComponent
   ],
-  imports: [
-    CommonModule,
-    GroceryRoutingModule,
-    CoreModule,
-    SharedModule
-  ],
+    imports: [
+        CommonModule,
+        GroceryRoutingModule,
+        CoreModule,
+        SharedModule,
+        FormsModule
+    ],
   providers: [
     GroceryService
   ]

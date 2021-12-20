@@ -61,7 +61,6 @@ registerForm: FormGroup;
       password: this.registerForm.value.password
     };
     this.signupService.register(userData).subscribe((response) => {
-      // tslint:disable-next-line:no-debugger
       this.toast.success('User has been created successfully');
       this.success = true;
     }, error => {

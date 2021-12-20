@@ -13,7 +13,6 @@ export class TokenService {
   constructor(private router: Router, private GEHS: GlobalErrorHandlerService) { }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token');
-    debugger;
     if (token) {
       request = request.clone({
         setHeaders: {
