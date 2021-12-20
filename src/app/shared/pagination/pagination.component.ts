@@ -58,6 +58,12 @@ export class PaginationComponent implements OnInit, OnDestroy {
     this.http.get(customURL)
       .subscribe((response: any) => {
           this.result.emit(response);
+          try{
+            this.do_not_load = response.results.length == 0;
+          }
+          catch (e){
+            console.error(e)
+          }
           if (response.next_key){
             this.displayPage.emit({next_key: response.next_key});
           } else {

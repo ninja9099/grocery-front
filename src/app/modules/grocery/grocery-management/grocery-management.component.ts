@@ -69,7 +69,7 @@ export class GroceryManagementComponent implements OnInit {
   createGroceryList(name: string, dueDate: string) {
     this.groceryService.createGroceryList(name, dueDate).subscribe(res => {
       this.toast.success("List created successfully", "Success :)");
-      location.reload();
+      this.groceryListOriginal.push(res.body);
     }, error => {
       this.toast.error("Error creating List", "Error :(");
     })
@@ -77,6 +77,7 @@ export class GroceryManagementComponent implements OnInit {
 
   deleteGroceryList(id: string) {
     this.groceryService.deleteGroceryLists(id).subscribe(res => {
+      this.groceryList = this.groceryList.filter(item => item.id !== id)
       this.toast.success("List Deleted successfully", "Success :)");
     }, error => {
       this.toast.error("Error deleting List", "Error :(");
