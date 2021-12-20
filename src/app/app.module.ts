@@ -7,6 +7,7 @@ import {CommonModule, DecimalPipe} from "@angular/common";
 import {CoreModule} from "./core/core.module";
 import {LoaderService} from "./core/services/loader.service";
 import {ToastrModule} from "ngx-toastr";
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {ToastrModule} from "ngx-toastr";
     AppRoutingModule,
     CoreModule,
     BrowserAnimationsModule,
+    SharedModule,
     ToastrModule.forRoot()
   ],
   providers: [LoaderService, DecimalPipe],
